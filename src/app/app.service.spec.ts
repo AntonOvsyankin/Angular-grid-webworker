@@ -72,6 +72,7 @@ describe('AppService', () => {
       rows$.subscribe(list => {
         expect(list[0].id).toEqual('10');
         expect(list[1].id).toEqual('11');
+        done();
       });
       service.data$.next(getGridRowList(3));
       service.additionalIDsList$.next(['10,11']);
@@ -82,6 +83,7 @@ describe('AppService', () => {
       rows$.subscribe(list => {
         expect(list[0].id).toEqual('10');
         expect(list[1].id).toEqual('1');
+        done();
       });
       service.data$.next(getGridRowList(1));
       service.additionalIDsList$.next(['10,11']);
