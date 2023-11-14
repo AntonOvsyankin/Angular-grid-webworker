@@ -1,10 +1,10 @@
-<div class="grid" *ngIf="rows && rows.length">
+<div class="grid" *ngIf="rows$ | async as rows">
   <div class="grid-container">
     <div *ngFor="let title of headers" class="grid-header">{{ title }}</div>
   </div>
 
   <div class="grid-container">
-    <div *ngFor="let row of rows" class="grid-row">
+    <div *ngFor="let row of rows; trackBy: identifyRow" class="grid-row">
       <div>
         <span>{{ row.id }}</span>
       </div>
@@ -19,7 +19,7 @@
         <span [style.background-color]="row.color">{{ row.color }}</span>
       </div>
       <div class="child">
-        <div *ngFor="let item of row.child | keyvalue">
+        <div *ngFor="let item of row.child | keyvalue;">
           <span>{{ item.key }}</span>
           <span [style.background-color]="item.value">{{ item.value }}</span>
         </div>

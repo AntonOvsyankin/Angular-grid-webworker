@@ -5,14 +5,13 @@ import { IMessageParams, IGridRow } from './app.model';
 let intervalID: ReturnType<typeof setInterval>;
 
 addEventListener('message', ({ data }: { data: IMessageParams }) => {
-  const response = generateRowList(data.size ?? DEFAULT_ROW_LENGTH);
 
   if (intervalID) {
     clearInterval(intervalID);
   }
 
   intervalID = setInterval(
-    () => postMessage(response),
+    () => postMessage(generateRowList(data.size ?? DEFAULT_ROW_LENGTH)),
     data.ms ?? DEFAULT_INTERVAL_MS
   );
 });

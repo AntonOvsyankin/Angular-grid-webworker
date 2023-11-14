@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PanelFormGroup } from './panel.formGroup';
 import { DataService } from '../data.service';
 
@@ -6,6 +6,7 @@ import { DataService } from '../data.service';
   selector: 'app-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PanelComponent {
   formGroup: PanelFormGroup;
